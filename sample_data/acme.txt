@@ -1,0 +1,6 @@
+member_id|fname|lname|birth_date|email_address|contact_number
+ACM001|john|doe|01/15/1985|JOHN.DOE@EMAIL.COM|5551234567
+ACM002|jane|SMITH|03/22/1990|Jane.Smith@email.com|5559876543
+ACM003|ROBERT|johnson|07/08/1978|robert.j@email.com|5555551234
+ACM004|emily|DAVIS|12/30/1995|EMILY.DAVIS@EMAIL.COM|5552223333
+ACM005|michael|brown|05/14/1982|Michael.Brown@email.com|5554445555

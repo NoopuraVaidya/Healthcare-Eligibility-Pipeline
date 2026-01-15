@@ -1,0 +1,89 @@
+partners:
+  acme_health:
+    partner_code: "ACME"
+    input_file: "sample_data/acme.txt"
+    file_format:
+      type: "delimited"
+      delimiter: "|"
+      header: true
+      encoding: "utf-8"
+    column_mapping:
+      external_id: "member_id"
+      first_name: "fname"
+      last_name: "lname"
+      dob: "birth_date"
+      email: "email_address"
+      phone: "contact_number"
+    transformations:
+      dob:
+        input_format: "%m/%d/%Y"
+        output_format: "%Y-%m-%d"
+      phone:
+        input_pattern: "raw"
+        output_format: "XXX-XXX-XXXX"
+  
+  better_care:
+    partner_code: "BTRC"
+    input_file: "sample_data/bettercare.csv"
+    file_format:
+      type: "delimited"
+      delimiter: ","
+      header: true
+      encoding: "utf-8"
+    column_mapping:
+      external_id: "patient_id"
+      first_name: "first"
+      last_name: "last"
+      dob: "dob"
+      email: "email"
+      phone: "phone_number"
+    transformations:
+      dob:
+        input_format: "%Y-%m-%d"
+        output_format: "%Y-%m-%d"
+      phone:
+        input_pattern: "various"
+        output_format: "XXX-XXX-XXXX"
+  
+  wellness_corp:
+    partner_code: "WLNS"
+    input_file: "sample_data/wellnesscorp.csv"
+    file_format:
+      type: "delimited"
+      delimiter: ","
+      header: true
+      encoding: "utf-8"
+    column_mapping:
+      external_id: "provider_key"
+      first_name: "given_name"
+      last_name: "family_name"
+      dob: "birth_date"
+      email: "email_addr"
+      phone: "telephone"
+    transformations:
+      dob:
+        input_format: "%Y/%m/%d"
+        output_format: "%Y-%m-%d"
+      phone:
+        input_pattern: "various"
+        output_format: "XXX-XXX-XXXX"
+
+global_transformations:
+  first_name:
+    case: "title"
+  last_name:
+    case: "title"
+  email:
+    case: "lower"
+
+output:
+  format: "csv"
+  path: "output/standardized_eligibility.csv"
+  columns:
+    - external_id
+    - first_name
+    - last_name
+    - dob
+    - email
+    - phone
+    - partner_code
